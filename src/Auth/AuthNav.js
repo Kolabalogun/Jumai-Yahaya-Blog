@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../Functions/Context";
 
-const AuthNav = ({ user, handleLogout, pageType }) => {
+const AuthNav = () => {
+  const { user, handleLogout, pageType } = useGlobalContext();
+
   const userId = user?.uid;
   // console.log("userId", userId);
   // console.log("name", user?.displayName);

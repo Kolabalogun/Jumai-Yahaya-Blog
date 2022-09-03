@@ -17,6 +17,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import AnimatedPage from "../Utils/AnimatedPage";
 import Line from "../components/Home/Line";
+import { useGlobalContext } from "../Functions/Context";
 
 const initialState = {
   title: "",
@@ -25,10 +26,12 @@ const initialState = {
 };
 const categoryOptions = ["Type-A", "Type-B", "Type-C", "Type-D"];
 
-const EditBlog = ({ user, pageType, pageTypeF, handleLogout }) => {
+const EditBlog = () => {
+  const { user, handleLogout, pageType, pageTypeF, navigate } =
+    useGlobalContext();
+
   const { id } = useParams();
 
-  const navigate = useNavigate();
   const [form, setform] = useState(initialState);
   const [file, setfile] = useState(null);
   const [progress, setprogress] = useState(null);
@@ -94,6 +97,7 @@ const EditBlog = ({ user, pageType, pageTypeF, handleLogout }) => {
   const handleChange = (e) => {
     setform({ ...form, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(form);

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Header from "../components/Blog/Header";
-import Contact from "../components/Contact";
-import Line from "../components/Home/Line";
+
 import Loader from "../components/Loader";
+import { useGlobalContext } from "../Functions/Context";
 import AnimatedPage from "../Utils/AnimatedPage";
 
 const Lipgloss = () => {

@@ -3,9 +3,10 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+
 import { toast } from "react-toastify";
+import { useGlobalContext } from "../Functions/Context";
 import { auth } from "../Utils/Firebase";
 import AuthNav from "./AuthNav";
 
@@ -18,8 +19,8 @@ const initialState = {
   confirmPassword: "",
 };
 
-const Auth = ({ user, handleLogout, pageType, pageTypeF }) => {
-  const navigate = useNavigate();
+const Auth = () => {
+  const { navigate } = useGlobalContext();
 
   const [state, setstate] = useState(initialState);
   const [signUp, setsignUp] = useState(false);
@@ -29,11 +30,6 @@ const Auth = ({ user, handleLogout, pageType, pageTypeF }) => {
   function handleChange(e) {
     setstate({ ...state, [e.target.name]: e.target.value });
   }
-
-  // to set the type of page
-  // useEffect(() => {
-  //   pageTypeF('Login')
-  // }, [])
 
   const handleAuth = async (e) => {
     e.preventDefault();
@@ -71,7 +67,7 @@ const Auth = ({ user, handleLogout, pageType, pageTypeF }) => {
 
   return (
     <div>
-      <AuthNav user={user} handleLogout={handleLogout} />
+      <AuthNav />
       <div className="authBody">
         <div className="authform">
           <form onSubmit={handleAuth}>

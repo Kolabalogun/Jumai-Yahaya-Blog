@@ -6,23 +6,18 @@ import Header from "../components/Blog/Header";
 import Contact from "../components/Contact";
 import Line from "../components/Home/Line";
 import Loader from "../components/Loader";
+import { useGlobalContext } from "../Functions/Context";
 import AnimatedPage from "../Utils/AnimatedPage";
 import { db } from "../Utils/Firebase";
 
-const Blog = ({ user }) => {
+const Blog = () => {
+  const { user, loader, setloader } = useGlobalContext();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const [blogs, blogsF] = useState([]);
-
-  const [loader, setloader] = useState(true);
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     closeLoader();
-  //   }, 2000);
-  // }, []);
 
   useEffect(() => {
     setloader(true);
@@ -61,8 +56,6 @@ const Blog = ({ user }) => {
       }
     }
   };
-
-  // console.log(blogs);
 
   return (
     <>

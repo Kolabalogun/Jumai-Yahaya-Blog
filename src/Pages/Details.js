@@ -6,11 +6,13 @@ import Header from "../components/Blog/Header";
 import Contact from "../components/Contact";
 import Line from "../components/Home/Line";
 import Loader from "../components/Loader";
+import { useGlobalContext } from "../Functions/Context";
 import AnimatedPage from "../Utils/AnimatedPage";
 import { db } from "../Utils/Firebase";
 
 const Details = () => {
   const { id } = useParams();
+
   const [blog, blogF] = useState(null);
 
   const [loader, setloader] = useState(false);

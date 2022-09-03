@@ -7,15 +7,12 @@ import Line from "../components/Home/Line";
 import Menu from "../components/Home/Menu";
 import Navbar from "../components/Home/Navbar";
 import Loader from "../components/Loader";
+import { useGlobalContext } from "../Functions/Context";
 import AnimatedPage from "../Utils/AnimatedPage";
 import { db } from "../Utils/Firebase";
 
-const Home = ({ user }) => {
-  const [loader, setloader] = useState(true);
-
-  function closeLoader(params) {
-    setloader(false);
-  }
+const Home = () => {
+  const { user, loader, closeLoader } = useGlobalContext();
 
   useEffect(() => {
     setTimeout(() => {
@@ -68,7 +65,6 @@ const Home = ({ user }) => {
           <div id="contact">
             <Contact />
           </div>
-          {/* <Footer /> */}
         </AnimatedPage>
       )}
     </div>
