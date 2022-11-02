@@ -247,6 +247,7 @@ const EditBlog = () => {
   const handleAboutChange = (e) => {
     aboutF(e.target.value);
   };
+  
 
   const handleAbout = async (e) => {
     e.preventDefault();
